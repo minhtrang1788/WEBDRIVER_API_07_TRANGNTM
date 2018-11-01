@@ -29,6 +29,7 @@ public class Topic_01_CheckEnvironment {
 	@Test
 	public void f() {
 		String homePageTitle = driver.getTitle();
+		System.out.print("hello test automation");	
 		Assert.assertEquals(homePageTitle, "Google");
 	}
 
