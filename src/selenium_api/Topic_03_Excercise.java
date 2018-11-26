@@ -1,23 +1,23 @@
 package selenium_api;
 
-import org.testng.annotations.Test;
-import org.testng.annotations.BeforeClass;
-
-import java.sql.Driver;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Test;
 
 public class Topic_03_Excercise {
 	WebDriver driver;
   @BeforeClass
   public void beforeClass() {
-	  driver = new FirefoxDriver();
+	  //driver = new FirefoxDriver();
+	  System.setProperty("webdriver.chrome.driver", ".\\lib\\chromedriver.exe");
+	  driver = new ChromeDriver();	
 	 
   }
   
@@ -39,50 +39,46 @@ public class Topic_03_Excercise {
 	  inputEmail.sendKeys("Automation testing");
 	  inputEducation.sendKeys("Automation testing");
 	  inputUnder18.click();
-	  
+	  System.out.println("size:"+driver.manage().window().getSize()); 
   }
   
   @Test
   public void TC_02_IsElementEnabled() {
 	  openWebBrowser();
-	  WebElement inputEmail =  driver.findElement(By.xpath("//input[@name='user_email']"));
-	  Assert.assertTrue(inputEmail.isEnabled());
-	  WebElement inputUnder18 =  driver.findElement(By.xpath("//input[@value='under_18']"));
-	  Assert.assertTrue(inputUnder18.isEnabled());
-	  WebElement inputEducation =  driver.findElement(By.xpath("//textarea[@id='edu']"));
-	  Assert.assertTrue(inputEducation.isEnabled());
-	  WebElement inputJob1 =  driver.findElement(By.xpath("//select[@id='job1']"));
-	  Assert.assertTrue(inputJob1.isEnabled());
-	  WebElement inputInterestDev =  driver.findElement(By.xpath("//input[@value='interest_development']"));
-	  Assert.assertTrue(inputInterestDev.isEnabled());
-	  WebElement slider1 =  driver.findElement(By.xpath("//input[@id='slider-1']"));
-	  Assert.assertTrue(slider1.isEnabled());
-	  WebElement buttonEnable =  driver.findElement(By.xpath("//button[@id='button-enabled']"));
-	  Assert.assertTrue(buttonEnable.isEnabled());
-	  
-	  
-	  WebElement inputPassword =  driver.findElement(By.xpath("//input[@id='password']"));
-	  Assert.assertTrue(!inputPassword.isEnabled());
-	  WebElement inputAge =  driver.findElement(By.xpath("//input[@value='radio-disabled']"));
-	  Assert.assertTrue(!inputAge.isEnabled());
-	  WebElement inputBiography =  driver.findElement(By.xpath("//textarea[@id='bio']"));
-	  Assert.assertTrue(!inputBiography.isEnabled());
-	  WebElement inputJob2 =  driver.findElement(By.xpath("//select[@id='job2']"));
-	  Assert.assertTrue(!inputJob2.isEnabled());
-	  WebElement interestsDisable  =  driver.findElement(By.xpath("//input[@id='check-disbaled']"));
-	  Assert.assertTrue(!interestsDisable.isEnabled());
-	  WebElement slider2 =  driver.findElement(By.xpath("//input[@id='slider-2']"));
-	  Assert.assertTrue(!slider2.isEnabled());
-	  WebElement buttonDisable =  driver.findElement(By.xpath("//button[@id='button-disabled']"));
-	  Assert.assertTrue(!buttonDisable.isEnabled());
- }
+	  checkEnable("//input[@name='user_email']");
+	  checkEnable("//input[@value='under_18']");
+	  checkEnable("//textarea[@id='edu']");
+	  checkEnable("//select[@id='job1']");
+	  checkEnable("//input[@value='interest_development']");
+	  checkEnable("//input[@id='slider-1']");
+	  checkEnable("//button[@id='button-enabled']");
+	  checkEnable("//input[@id='password']");
+	  checkEnable("//textarea[@id='bio']");
+	  checkEnable("//select[@id='job2']");
+	  checkEnable("//input[@id='check-disbaled']");
+	  checkEnable("//input[@id='slider-2']");
+	  checkEnable("//button[@id='button-disabled']");
+  }
   
+  public void checkEnable(String byXpath) {
+	  WebElement element =  driver.findElement(By.xpath(byXpath));
+	 
+	  if(element.isEnabled()) {
+		  Assert.assertTrue(element.isEnabled());
+		  System.out.println(byXpath + "is enable");
+	  }
+	  else {
+		  Assert.assertTrue(!element.isEnabled());
+		  System.out.println(byXpath + "is disable");
+	  }
+	  
+  }
   @Test
   public void TC_03_IsSelectedElement() {
 	  openWebBrowser();
-	  WebElement inputUnder18 =  driver.findElement(By.xpath("//input[@value='under_18']"));
+	  WebElement inputUnder18 =  driver.findElement(By.xpath("//input[@id='under_18']"));
 	  inputUnder18.click();
-	  WebElement inputInterestDev =  driver.findElement(By.xpath("//input[@id='development']"));
+	  WebElement inputInterestDev =  driver.findElement(By.xpath("//input[@value='interest_development']"));
 	  inputInterestDev.click();
 	  if(!inputUnder18.isSelected())
 		  inputUnder18.click();
@@ -93,7 +89,7 @@ public class Topic_03_Excercise {
   }
   @AfterClass
   public void afterClass() {
-	  driver.quit();
+	//  driver.quit();
   }
 
 }

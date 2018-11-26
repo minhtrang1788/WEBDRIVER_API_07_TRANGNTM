@@ -27,14 +27,7 @@ public class TemplateClass {
   }
   
   @Test
-  public void TC_01_Progress_Dropdown_List() {
-	  openWebBrowser();
-	  Select inputJob1 = new Select( driver.findElement(By.xpath("//select[@id='job1']")));
-	  Assert.assertTrue(!inputJob1.isMultiple());
-	  inputJob1.selectByVisibleText("Automation Tester");
-	  String selectedOption = inputJob1.getFirstSelectedOption().getAttribute("value");
-	  System.out.println("selectedOption"+selectedOption);
-	  Assert.assertTrue(selectedOption.equals("automation"));
+  public void f() {
   }
   
   @AfterClass
