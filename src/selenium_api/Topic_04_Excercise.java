@@ -1,6 +1,6 @@
 package selenium_api;
 
-import static org.junit.Assert.assertTrue;
+import org.testng.Assert;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;

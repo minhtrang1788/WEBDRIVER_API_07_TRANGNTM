@@ -4,7 +4,7 @@ import org.testng.annotations.Test;
 
 import com.sun.java.swing.plaf.windows.resources.windows;
 
-import junit.framework.Assert;
+import org.testng.Assert;
 
 import org.testng.annotations.BeforeClass;
 
