@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="Suite" parallel="tests" >
+	<test name="Test_on_chrome">
+	<parameter name="browser" value="chrome"/>
+		<groups>
+			<run>
+				<include name="group_1"></include>
+				<include name="group_2"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="TestNg_ex.test_group_anotation" />
+			<class name="TestNg_ex.test_group_anotation2" />
+		</classes>
+	</test> <!-- Test -->
+	<test name="Test_on_firefox">
+	<parameter name="browser" value="firefox"/>
+		<groups>
+			<run>
+				<include name="group_1"></include>
+				<include name="group_2"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="TestNg_ex.test_group_anotation" />
+			<class name="TestNg_ex.test_group_anotation2" />
+		</classes>
+	</test> <!-- Test -->
+	<test name="Test_on_ie">
+	<parameter name="browser" value="ie"/>
+		<groups>
+			<run>
+				<include name="group_1"></include>
+				<include name="group_2"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="TestNg_ex.test_group_anotation" />
+			<class name="TestNg_ex.test_group_anotation2" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->
